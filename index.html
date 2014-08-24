@@ -26,12 +26,22 @@ $(document).ready(function(){
     
     var c=new Raphael("canvas");
     
-    var cc={first:12,second:10,fourth:10,third:100};
+    var cc={
+        first:12,
+        second:10,
+        fourth:10,
+        third:100,
+        firt:12,
+        seond:10,
+        furth:10,
+        hird:100
+        
+    };
     
     var iris=function(cc){
         var sum=0;
         for (var i in cc){sum+=cc[i];}
-        
+        var s=[];
         var theta=0;
         var tOffset=0;
         for (var i in cc){
@@ -41,7 +51,9 @@ $(document).ready(function(){
             var h=c.path(geo.arcPath(b.centerX,b.centerY,Math.min(b.centerX,b.centerY)-10,0,theta,20));  
             h.rotate(tOffset,b.centerX,b.centerY);
             h.attr({"fill":"#fff","cursor":"pointer"});
+            //h.transform("s 0 0 ",b.centerX,b.centerY);
             h.data("label",i);
+            h.data("tOffset",tOffset);
             h.hover(function(){
                this.stop();
                this.attr({"fill":"#d00"});
@@ -52,8 +64,13 @@ $(document).ready(function(){
                 this.data("animatedLabel").animate({"opacity":0},500,function(){this.remove();});
                 this.animate({"fill":"#fff"},500);
             });
+            s.push(h);
         }
+        
+       
     };
+    
+    
     
     iris(cc);
     
