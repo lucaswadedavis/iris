@@ -14,65 +14,29 @@ $(document).ready(function(){
     var d="<div id='canvas'></div>";
     $("body").html(d);    
     
-    var b={};
-    b.left=0;
-    b.top=0;
-    b.bottom=$(window).innerHeight();
-    b.right=$(window).innerWidth();
-    b.centerX=b.right/2;
-    b.centerY=b.bottom/2;
+    var b=davis.quickBox();
     
     zi.css();
     
     var c=new Raphael("canvas");
     
     var cc={
-        first:12,
-        second:10,
-        fourth:10,
-        third:100,
-        firt:12,
-        seond:10,
-        furth:10,
-        hird:100
-        
+        Luke:50,
+        loves:100,
+        Morgan:50,
+        "and Fiona":30,
+        "and Rowan":30,
+        "and other stuff":10,
+        "but much less":3
     };
     
-    var iris=function(cc){
-        var sum=0;
-        for (var i in cc){sum+=cc[i];}
-        var s=[];
-        var theta=0;
-        var tOffset=0;
-        for (var i in cc){
-            theta=360*(cc[i]/sum);
-            //if (theta>360){theta=theta-360;}
-            tOffset+=theta;
-            var h=c.path(geo.arcPath(b.centerX,b.centerY,Math.min(b.centerX,b.centerY)-10,0,theta,20));  
-            h.rotate(tOffset,b.centerX,b.centerY);
-            h.attr({"fill":"#fff","cursor":"pointer"});
-            //h.transform("s 0 0 ",b.centerX,b.centerY);
-            h.data("label",i);
-            h.data("tOffset",tOffset);
-            h.hover(function(){
-               this.stop();
-               this.attr({"fill":"#d00"});
-               var t=c.text(b.centerX,b.centerY,this.data("label"));
-               t.attr({"font-size":30});
-               this.data("animatedLabel",t);
-            },function(){
-                this.data("animatedLabel").animate({"opacity":0},500,function(){this.remove();});
-                this.animate({"fill":"#fff"},500);
-            });
-            s.push(h);
-        }
-        
-       
-    };
+    opts={};
+    opts.data=cc;
+    opts.bounds=b;
+    opts.canvas=c;
     
+    geo.donut(opts);
     
-    
-    iris(cc);
     
 });
 </script>
