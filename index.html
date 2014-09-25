@@ -8,38 +8,7 @@
 <script type='text/javascript' src='js/underscore-1.6.0.js'></script>
 <script type='text/javascript' src='js/zi.js'></script>
 <script type='text/javascript' src='js/davis.js'></script>
-
-<script type='text/javascript'>
-$(document).ready(function(){
-    var d="<div id='canvas'></div>";
-    $("body").html(d);    
-    
-    var b=davis.quickBox();
-    
-    zi.css();
-    
-    var c=new Raphael("canvas");
-    
-    var cc={
-        Luke:50,
-        loves:100,
-        Morgan:50,
-        "and Fiona":30,
-        "and Rowan":30,
-        "and other stuff":10,
-        "but much less":3
-    };
-    
-    opts={};
-    opts.data=cc;
-    opts.bounds=b;
-    opts.canvas=c;
-    
-    geo.donut(opts);
-    
-    
-});
-</script>
+<script type='text/javascript' src='js/app-0.0.0.js'></script>
 
 </head>
 
