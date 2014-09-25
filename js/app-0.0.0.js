@@ -1,12 +1,47 @@
-
 $(document).ready(function(){
+app.c.init();
+});
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+
+
+var app={};
+app.m={};
+app.v={};
+app.c={};
+
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+
+
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+
+app.c.init=function(){
+    app.v.init();
+};
+
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
+
+app.v.init=function(){
+    zi.css();
+    app.v.LAYOUT();
+};
+
+app.v.LAYOUT=function(){
     var d="<div id='canvas'></div>";
     $("body").html(d);    
-    
+    app.v.IRIS("canvas");
+};
+
+app.v.IRIS=function(target){
+    var target=target||"canvas";
     var b=davis.quickBox();
-    
-    zi.css();
-    
     var c=new Raphael("canvas");
     
     var cc={
@@ -19,12 +54,13 @@ $(document).ready(function(){
         "but much less":3
     };
     
-    opts={};
+    var opts={};
     opts.data=cc;
     opts.bounds=b;
     opts.canvas=c;
     
     geo.donut(opts);
-    
-    
-});
+};
+
+/////////////////////////////////////////////
+/////////////////////////////////////////////
